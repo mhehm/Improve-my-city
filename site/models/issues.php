@@ -54,7 +54,7 @@ class ImprovemycityModelIssues extends JModelList
 	}	
 
  	//protected function populateState($ordering = 'ordering', $direction = 'ASC')
- 	protected function populateState()
+ 	protected function populateState($ordering = 'ordering', $direction = 'ASC')
 	{
 		$app = JFactory::getApplication();
 		

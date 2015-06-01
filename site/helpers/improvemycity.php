@@ -13,7 +13,7 @@ abstract class ImprovemycityHelper
 	*	Simple helper to add itemid to every link so as to match joomla's active menu id 
 	*
 	*/
-	public function generateRouteLink($link) {
+	public static function generateRouteLink($link) {
 		return JRoute::_($link.'&amp;Itemid='.JRequest::getint( 'Itemid' ));
 		//return $link.'&amp;Itemid='.JRequest::getint( 'Itemid' );
 	}	

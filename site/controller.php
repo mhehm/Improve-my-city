@@ -20,9 +20,11 @@ class ImprovemycityController extends JController
 		
 		$view = JRequest::getCmd('view', 'issues');
 		JRequest::setVar('view', $view);
-		$v = & $this->getView($view, 'html');
-		$v->setModel($this->getModel($view), true); //the default model (true) :: $view is either issues or issue
-		$v->setModel($this->getModel('discussions'));
+		$v = $this->getView($view, 'html');
+		$vmodel =$this->getModel($view); //mhehm
+		$v->setModel($vmodel, true); //the default model (true) :: $view is either issues or issue //mhehm
+		$dmodel = $this->getModel('discussions'); //mhehm
+		$v->setModel($dmodel); //mhehm
 		$v->display();
 
 		return $this; 
@@ -34,8 +36,9 @@ class ImprovemycityController extends JController
 		JRequest::setVar('view', $view);
 		
 		
-		$v = & $this->getView($view, 'html');
-		$v->setModel($this->getModel($view));
+		$v = $this->getView($view, 'html');
+		$vmodel = $this->getModel($view); //mhehm
+		$v->setModel($vmodel); //mhehm
 		//$v->display();
 		parent::display();
 		
@@ -192,9 +195,11 @@ class ImprovemycityController extends JController
 
 	function printIssue()
 	{
-		$v = & $this->getView('issue', 'print');		//view.print.php
-		$v->setModel($this->getModel('issue'), true);	//load issue model
-		$v->setModel($this->getModel('discussions'));	//load comments as well
+		$v = $this->getView('issue', 'print');		//view.print.php
+		$iModel = $this->getModel('issue'); //mhehm
+		$dModel = $this->getModel('discussions'); //mhehm
+		$v->setModel($iModel, true);	//load issue model //mhehm
+		$v->setModel($dModel);	//load comments as well //mhehm
 		$v->display('print');							//template set to tmpl/default_print.php
 		
 	}

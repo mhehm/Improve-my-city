@@ -56,6 +56,7 @@ class ImprovemycityViewIssue extends JView
 		
 		$lang = $this->params->get('maplanguage');
 		$region = $this->params->get('mapregion');
+		if (empty($lang) && empty($region)) list($lang, $region) = explode('-', JFactory::getLanguage()->getTag());
 		$lat = $this->params->get('latitude');
 		$lon = $this->params->get('longitude');
 		$term = $this->params->get('searchterm');
@@ -103,7 +104,7 @@ class ImprovemycityViewIssue extends JView
 		
 		
 		//check if user is logged
-		$user =& JFactory::getUser();
+		$user = JFactory::getUser();
 		$this->guest = $user->guest;		
 		
 		// Check for errors.

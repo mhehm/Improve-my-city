@@ -38,7 +38,7 @@ class ImprovemycityModelDiscussions extends JModelList
 		}
 		
 		// Invoke the parent getItems method to get the main list
-		$items = &parent::getItems();
+		$items = parent::getItems();
 		//$this->_total = count($items);
 		
 		

@@ -38,6 +38,7 @@ class ImprovemycityViewIssue extends JView
 
 		$lang = $this->state->params->get('maplanguage');
 		$region = $this->state->params->get('mapregion');
+		if (empty($lang) && empty($region)) list($lang, $region) = explode('-', JFactory::getLanguage()->getTag());
 		$lat = $this->state->params->get('latitude');
 		$lon = $this->state->params->get('longitude');
 		$term = $this->state->params->get('searchterm');
@@ -48,7 +49,7 @@ class ImprovemycityViewIssue extends JView
 		$this->lon = (empty($lon) ? 23.01861169311519 : $lon);
 		$this->searchterm = (empty($term) ? "" : $term);
 
-		$this->issuer = &JFactory::getUser($this->item->userid);
+		$this->issuer = JFactory::getUser($this->item->userid);
 		
 
 		// Check for errors.

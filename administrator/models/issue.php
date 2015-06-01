@@ -94,7 +94,7 @@ class ImprovemycityModelIssue extends JModelAdmin
 				$item->votes = 0;	
 				
 			//keep issue status to session so before saving to check for changes...
-			$session =& JFactory::getSession();
+			$session = JFactory::getSession();
 			$session->set( 'previousIssueStatus', $item->currentstatus );
 			$session->set( 'previousCatid', $item->catid );
 		}

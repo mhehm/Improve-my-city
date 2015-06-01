@@ -20,10 +20,11 @@ defined('_JEXEC') or die;
 	<?php 
 		$status = '';
 		$steps = '';
-		$arrow_gray = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/arrow_gray.png' . '" />';
-		$arrow_open = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/arrow_open.png' . '" />';
-		$arrow_ack = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/arrow_ack.png' . '" />';
-		$arrow_closed = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/arrow_closed.png' . '" />';
+		$dir = JFactory::getLanguage()->isRTL() ? '_rtl' : ''; //mhehm
+		$arrow_gray = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/arrow_gray' . $dir . '.png' . '" />';
+		$arrow_open = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/arrow_open' . $dir . '.png' . '" />';
+		$arrow_ack = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/arrow_ack' . $dir . '.png' . '" />';
+		$arrow_closed = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/arrow_closed' . $dir . '.png' . '" />';
 		$steps_ok = '<img src="' . JURI::root(true).'/components/com_improvemycity/images/steps_ok.png' . '" />';
 		
 		switch($this->item->currentstatus){
