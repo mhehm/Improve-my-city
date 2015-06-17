@@ -56,7 +56,7 @@ class ImprovemycityController extends JController
 		/* $user =& JFactory::getUser();	print_r($user);  http://forum.joomla.org/viewtopic.php?p=2730458 */
 		JRequest::checkToken('post') or jexit('Invalid Token');
 		
-		$user =& JFactory::getUser();
+		$user = JFactory::getUser();
 		
 		if(!$user->guest)
 		{

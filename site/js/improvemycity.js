@@ -66,7 +66,7 @@ function comment(){
 	
 	jImc.ajax({
 		type : 'POST',
-		url : 'index.php',
+		url : '',
 		datatype: 'json',
 		data: jImc('#com_improvemycity_comments').serialize(),
 		success: function(data){

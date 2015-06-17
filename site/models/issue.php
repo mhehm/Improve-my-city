@@ -186,7 +186,7 @@ class ImprovemycityModelIssue extends JModelItem
 		$db = $this->getDbo();	
 		
 		if($userid == null){
-			$user =& JFactory::getUser();
+			$user = JFactory::getUser();
 			$userid = (int) $user->id;
 		}
 				
