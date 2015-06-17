@@ -103,38 +103,6 @@ class ImprovemycityModelComment extends JModelAdmin
 	protected function prepareTable(&$table)
 	{
 		jimport('joomla.filter.output');
-
-		if (empty($table->id)) {
-
-			// Set ordering to the last item if not set
-			if (@$table->ordering === '') {
-				$db = JFactory::getDbo();
-				$db->setQuery('SELECT MAX(ordering) FROM #__improvemycity_comments');
-				$max = $db->loadResult();
-				$table->ordering = $max+1;
-			}
-			$table->reported = date('Y-m-d H:i:s');
-		}
-		
-		
-		if($table->reported == '0000-00-00 00:00:00'){
-			$table->reported = date('Y-m-d H:i:s');
-			$table->acknowledged = '0000-00-00 00:00:00';		
-			$table->closed = '0000-00-00 00:00:00';		
-		}
-		
-		if($table->currentstatus == '2'){
-			if($table->acknowledged == '0000-00-00 00:00:00'){
-				$table->acknowledged = date('Y-m-d H:i:s');
-				$table->closed = '0000-00-00 00:00:00';
-			}
-		}
-		if($table->currentstatus == '3'){
-			if($table->closed == '0000-00-00 00:00:00'){
-				$table->closed = date('Y-m-d H:i:s');
-			}
-			
-		}
 		
 		$user =& JFactory::getUser();
 		$table->userid = $user->id;

@@ -55,8 +55,8 @@ class ImprovemycityModelComments extends JModelList
 		$search = $app->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
 
-		$published = $app->getUserStateFromRequest($this->context.'.filter.state', 'filter_published', '', 'string');
-		$this->setState('filter.state', $published);
+		$published = $app->getUserStateFromRequest($this->context.'.filter.published', 'filter_published', '', 'string');
+		$this->setState('filter.published', $published);
 
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_improvemycity');
@@ -81,7 +81,7 @@ class ImprovemycityModelComments extends JModelList
 	{
 		// Compile the store id.
 		$id.= ':' . $this->getState('filter.search');
-		$id.= ':' . $this->getState('filter.state');
+		$id.= ':' . $this->getState('filter.published');
 
 		return parent::getStoreId($id);
 	}
@@ -108,6 +108,15 @@ class ImprovemycityModelComments extends JModelList
 		$query->from('`#__improvemycity_comments` AS a');
 		$query->leftJoin('#__improvemycity on improvemycityid=#__improvemycity.id');
 		$query->leftJoin('#__users on a.userid=#__users.id');
+
+		// Filter by published state
+		$published = $this->getState('filter.published');
+		if (is_numeric($published)) {
+			$query->where('a.state = ' . (int) $published);
+		}
+		elseif ($published === '') {
+			$query->where('(a.state = 0 OR a.state = 1)');
+		}
 
 		// Filter by search in title
 		$search = $this->getState('filter.search');
